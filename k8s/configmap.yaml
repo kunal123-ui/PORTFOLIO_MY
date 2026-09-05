@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: portfolio-config
+  namespace: portfolio
+data:
+  # Any non-sensitive configuration can be placed here
+  VITE_APP_ENV: "production"
