@@ -2,7 +2,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Mail, ArrowRight, Download, Terminal, Server, Cloud, Globe, Box, Settings } from 'lucide-react';
 import { getTechIcon } from '../config/iconMap';
-import { SiGithub, SiLinkedin } from 'react-icons/si';
+import { SiGithub } from 'react-icons/si';
+import { FaLinkedin } from 'react-icons/fa';
 import { Link as ScrollLink } from 'react-scroll';
 
 const Hero = () => {
@@ -70,7 +71,7 @@ const Hero = () => {
                   <SiGithub size={22} className="text-slate-800 dark:text-white" />
                 </a>
                 <a href="https://www.linkedin.com/in/kunal-m-cse" target="_blank" rel="noreferrer" className="p-3 bg-white dark:bg-slate-800 rounded-full hover:text-[#0A66C2] hover:scale-110 transition-all shadow-sm">
-                  <SiLinkedin size={22} className="text-[#0A66C2]" />
+                  <FaLinkedin size={22} className="text-[#0A66C2]" />
                 </a>
                 <a href="mailto:kunal@example.com" className="p-3 bg-white dark:bg-slate-800 rounded-full hover:text-brand-purple hover:scale-110 transition-all shadow-sm">
                   <Mail size={22} className="text-slate-800 dark:text-white" />
