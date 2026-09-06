@@ -1,6 +1,6 @@
 import React from 'react';
 import { Mail, Heart } from 'lucide-react';
-import { GithubIcon as Github, LinkedinIcon as Linkedin } from './BrandIcons';
+import { SiGithub, SiLinkedin } from 'react-icons/si';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
@@ -16,10 +16,10 @@ const Footer = () => {
           
           <div className="flex items-center gap-4">
             <a href="https://github.com/kunal123-ui" target="_blank" rel="noreferrer" className="p-3 bg-white dark:bg-slate-800 rounded-full hover:text-brand-blue transition-colors shadow-sm">
-              <Github size={20} />
+              <SiGithub size={20} className="text-slate-800 dark:text-white" />
             </a>
             <a href="https://www.linkedin.com/in/kunal-m-cse" target="_blank" rel="noreferrer" className="p-3 bg-white dark:bg-slate-800 rounded-full hover:text-brand-blue transition-colors shadow-sm">
-              <Linkedin size={20} />
+              <SiLinkedin size={20} className="text-[#0A66C2]" />
             </a>
             <a href="mailto:kunal@example.com" className="p-3 bg-white dark:bg-slate-800 rounded-full hover:text-brand-blue transition-colors shadow-sm">
               <Mail size={20} />

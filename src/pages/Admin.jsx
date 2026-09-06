@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Routes, Route, NavLink, useNavigate, Navigate } from 'react-router-dom';
-import { LayoutDashboard, FolderKanban, Code, Briefcase, GraduationCap, Award, Trophy, MessageSquare, Settings, LogOut, Menu, X, ShieldAlert } from 'lucide-react';
+import { LayoutDashboard, FolderKanban, Code2, Briefcase, GraduationCap, Award, Trophy, MessageSquare, Settings, LogOut, Menu, X, ShieldAlert } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 
 // Import Admin Views
@@ -18,7 +18,7 @@ const Admin = () => {
   const navItems = [
     { name: 'Dashboard', path: '', icon: <LayoutDashboard size={20} /> },
     { name: 'Projects', path: 'projects', icon: <FolderKanban size={20} /> },
-    { name: 'Skills', path: 'skills', icon: <Code size={20} /> },
+    { name: 'Skills', path: 'skills', icon: <Code2 size={20} /> },
     { name: 'Experience', path: 'experience', icon: <Briefcase size={20} /> },
     { name: 'Education', path: 'education', icon: <GraduationCap size={20} /> },
     { name: 'Certifications', path: 'certifications', icon: <Award size={20} /> },

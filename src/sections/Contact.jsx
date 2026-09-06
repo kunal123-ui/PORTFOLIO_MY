@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Send, MapPin, Mail, Phone } from 'lucide-react';
-import { GithubIcon as Github, LinkedinIcon as Linkedin } from '../components/BrandIcons';
+import { SiGithub, SiLinkedin } from 'react-icons/si';
 import { usePortfolio } from '../context/PortfolioContext';
 import { toast } from 'react-toastify';
 
@@ -95,10 +95,10 @@ const Contact = () => {
               <h4 className="text-sm font-semibold text-slate-500 uppercase mb-4">Connect Professionally</h4>
               <div className="flex gap-4">
                 <a href="https://github.com/kunal123-ui" target="_blank" rel="noreferrer" className="p-3 bg-slate-100 dark:bg-slate-800 rounded-xl hover:bg-brand-blue hover:text-white transition-all shadow-sm">
-                  <Github size={20} />
+                  <SiGithub size={20} className="text-slate-800 dark:text-white group-hover:text-white" />
                 </a>
                 <a href="https://www.linkedin.com/in/kunal-m-cse" target="_blank" rel="noreferrer" className="p-3 bg-slate-100 dark:bg-slate-800 rounded-xl hover:bg-brand-blue hover:text-white transition-all shadow-sm">
-                  <Linkedin size={20} />
+                  <SiLinkedin size={20} className="text-[#0A66C2] group-hover:text-white" />
                 </a>
               </div>
             </div>

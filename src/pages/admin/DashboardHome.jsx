@@ -1,6 +1,6 @@
 import React from 'react';
 import { usePortfolio } from '../../context/PortfolioContext';
-import { FolderKanban, Code, Briefcase, GraduationCap, Award, Trophy, MessageSquare } from 'lucide-react';
+import { FolderKanban, Code2, Briefcase, GraduationCap, Award, Trophy, MessageSquare } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const StatCard = ({ title, count, icon, path, color }) => (
@@ -26,7 +26,7 @@ const DashboardHome = () => {
       
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         <StatCard title="Projects" count={data.projects?.length || 0} icon={<FolderKanban />} path="projects" color="bg-brand-blue" />
-        <StatCard title="Skills" count={data.skills?.length || 0} icon={<Code />} path="skills" color="bg-brand-purple" />
+        <StatCard title="Skills" count={data.skills?.length || 0} icon={<Code2 />} path="skills" color="bg-brand-purple" />
         <StatCard title="Experience" count={data.experience?.length || 0} icon={<Briefcase />} path="experience" color="bg-brand-green" />
         <StatCard title="Education" count={data.education?.length || 0} icon={<GraduationCap />} path="education" color="bg-orange-500" />
         <StatCard title="Certifications" count={data.certifications?.length || 0} icon={<Award />} path="certifications" color="bg-emerald-500" />

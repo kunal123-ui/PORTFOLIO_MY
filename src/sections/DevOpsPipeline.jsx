@@ -1,17 +1,18 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { PlayCircle, Settings, CheckCircle2, Box, ArrowRight } from 'lucide-react';
-import { GithubIcon as Github } from '../components/BrandIcons';
+import { Terminal, Settings, CheckCircle2, ArrowRight, Cloud, Globe } from 'lucide-react';
+import { getTechIcon } from '../config/iconMap';
 
 const DevOpsPipeline = () => {
   const steps = [
-    { icon: <Code2 size={24} />, label: "Code", color: "text-blue-500", delay: 0 },
-    { icon: <Github size={24} />, label: "GitHub", color: "text-slate-700 dark:text-slate-300", delay: 0.2 },
-    { icon: <PlayCircle size={24} />, label: "Actions", color: "text-purple-500", delay: 0.4 },
-    { icon: <CheckCircle2 size={24} />, label: "Build/Test", color: "text-green-500", delay: 0.6 },
-    { icon: <Box size={24} />, label: "Docker", color: "text-blue-400", delay: 0.8 },
-    { icon: <Settings size={24} />, label: "Kubernetes", color: "text-blue-600", delay: 1.0 },
-    { icon: <Globe size={24} />, label: "Live Site", color: "text-emerald-500", delay: 1.2 },
+    { icon: <Terminal size={28} />, label: "Developer", color: "text-slate-300", delay: 0 },
+    { icon: <span className="text-[28px]">{getTechIcon('GitHub')}</span>, label: "GitHub", color: "text-white", delay: 0.2 },
+    { icon: <span className="text-[28px]">{getTechIcon('GitHub Actions')}</span>, label: "GitHub Actions", color: "text-[#2088FF]", delay: 0.4 },
+    { icon: <CheckCircle2 size={28} />, label: "Build / Test", color: "text-green-500", delay: 0.6 },
+    { icon: <span className="text-[28px]">{getTechIcon('Docker')}</span>, label: "Docker", color: "text-[#2496ED]", delay: 0.8 },
+    { icon: <span className="text-[28px]">{getTechIcon('Kubernetes')}</span>, label: "Kubernetes", color: "text-[#326CE5]", delay: 1.0 },
+    { icon: <Cloud size={28} />, label: "Service / Ingress", color: "text-blue-400", delay: 1.2 },
+    { icon: <Globe size={28} />, label: "Live Website", color: "text-emerald-500", delay: 1.4 },
   ];
 
   return (
@@ -38,7 +39,7 @@ const DevOpsPipeline = () => {
              />
           </div>
 
-          <div className="flex flex-col md:flex-row justify-between items-center gap-8 md:gap-0 relative z-10">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-8 md:gap-0 relative z-10 overflow-x-auto pb-8 md:pb-0 hide-scrollbar">
             {steps.map((step, index) => (
               <React.Fragment key={index}>
                 <motion.div 
@@ -46,17 +47,22 @@ const DevOpsPipeline = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: step.delay }}
-                  className="flex flex-col items-center group"
+                  className="flex flex-col items-center group min-w-[80px]"
                 >
                   <div className={`w-16 h-16 rounded-2xl bg-slate-800 border border-slate-700 flex items-center justify-center shadow-lg ${step.color} group-hover:scale-110 group-hover:border-brand-green group-hover:shadow-brand-green/20 transition-all z-10`}>
                     {step.icon}
                   </div>
-                  <span className="mt-4 font-medium text-sm text-slate-300 whitespace-nowrap">{step.label}</span>
+                  <span className="mt-4 font-medium text-xs md:text-sm text-slate-300 text-center">{step.label}</span>
                 </motion.div>
                 
-                {/* Mobile arrows */}
+                {/* Mobile & Desktop arrows */}
                 {index < steps.length - 1 && (
-                  <div className="md:hidden text-brand-green animate-pulse">
+                  <div className="text-slate-600 dark:text-slate-700 animate-pulse hidden md:block">
+                    <ArrowRight size={20} />
+                  </div>
+                )}
+                {index < steps.length - 1 && (
+                  <div className="md:hidden text-brand-green animate-pulse my-2">
                     <ArrowRight className="rotate-90" />
                   </div>
                 )}
@@ -83,9 +89,5 @@ const DevOpsPipeline = () => {
     </section>
   );
 };
-
-// Quick icons not imported above
-const Code2 = ({size, className}) => <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>;
-const Globe = ({size, className}) => <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>;
 
 export default DevOpsPipeline;

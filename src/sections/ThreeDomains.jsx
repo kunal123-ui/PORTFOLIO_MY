@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Layout, Server, CloudCog } from 'lucide-react';
+import { getTechIcon } from '../config/iconMap';
 
 const DomainCard = ({ title, description, technologies, icon, colorClass, delay }) => {
   return (
@@ -22,10 +23,19 @@ const DomainCard = ({ title, description, technologies, icon, colorClass, delay 
       <div>
         <h4 className="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-3">Technologies</h4>
         <div className="flex flex-wrap gap-2">
-          {technologies.map(tech => (
-            <span key={tech} className="px-3 py-1 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-xs font-medium">
+          {technologies.map((tech, i) => (
+            <motion.span 
+              key={tech} 
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: delay + (i * 0.1) }}
+              whileHover={{ scale: 1.05 }}
+              className="flex items-center gap-1.5 px-3 py-1.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-xs font-medium shadow-sm hover:shadow-md cursor-default transition-shadow"
+            >
+              <span className="text-sm">{getTechIcon(tech)}</span>
               {tech}
-            </span>
+            </motion.span>
           ))}
         </div>
       </div>
@@ -59,7 +69,7 @@ const ThreeDomains = () => {
           <DomainCard 
             title="Frontend Development"
             description="Building responsive, modern, and user-friendly interfaces that provide an exceptional user experience."
-            technologies={['HTML', 'CSS', 'JavaScript', 'React.js', 'Bootstrap', 'Tailwind CSS']}
+            technologies={['HTML5', 'CSS3', 'JavaScript', 'React.js', 'Bootstrap', 'Tailwind CSS']}
             icon={<Layout size={32} className="text-brand-blue" />}
             colorClass="border-t-brand-blue hover:shadow-brand-blue/20"
             delay={0.1}
@@ -67,7 +77,7 @@ const ThreeDomains = () => {
           <DomainCard 
             title="Full Stack Development"
             description="Building complete web applications from frontend interfaces to robust backend architectures and databases."
-            technologies={['React', 'Node.js', 'Express.js', 'MongoDB', 'MySQL', 'REST APIs', 'JWT']}
+            technologies={['React.js', 'Node.js', 'Express.js', 'MongoDB', 'MySQL', 'REST APIs', 'JWT']}
             icon={<Server size={32} className="text-brand-purple" />}
             colorClass="border-t-brand-purple hover:shadow-brand-purple/20"
             delay={0.2}
@@ -75,7 +85,7 @@ const ThreeDomains = () => {
           <DomainCard 
             title="DevOps & Cloud"
             description="Automating development, deployment, and application infrastructure for reliable and scalable operations."
-            technologies={['Git', 'Docker', 'Jenkins', 'GitHub Actions', 'Linux', 'AWS', 'CI/CD']}
+            technologies={['Git', 'GitHub', 'Docker', 'Jenkins', 'GitHub Actions', 'Linux', 'AWS', 'Kubernetes', 'CI/CD']}
             icon={<CloudCog size={32} className="text-brand-green" />}
             colorClass="border-t-brand-green hover:shadow-brand-green/20"
             delay={0.3}

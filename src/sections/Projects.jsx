@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, X } from 'lucide-react';
-import { GithubIcon as Github } from '../components/BrandIcons';
+import { ExternalLink, X, Search } from 'lucide-react';
+import { SiGithub } from 'react-icons/si';
 import { usePortfolio } from '../context/PortfolioContext';
+import { getTechIcon } from '../config/iconMap';
 
 const ProjectModal = ({ project, onClose }) => {
   if (!project) return null;
@@ -43,7 +44,7 @@ const ProjectModal = ({ project, onClose }) => {
             <div className="flex gap-4">
               {project.github && (
                 <a href={project.github} target="_blank" rel="noreferrer" className="flex items-center gap-2 px-5 py-2.5 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-lg transition-colors font-medium">
-                  <Github size={18} /> GitHub
+                  <SiGithub size={18} className="text-slate-800 dark:text-white" /> GitHub
                 </a>
               )}
               {project.liveDemo && (
@@ -80,7 +81,8 @@ const ProjectModal = ({ project, onClose }) => {
                 <h3 className="text-lg font-bold mb-4">Technologies</h3>
                 <div className="flex flex-wrap gap-2">
                   {project.technologies?.map((tech, i) => (
-                    <span key={i} className="px-3 py-1 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-full text-xs font-medium text-slate-700 dark:text-slate-300">
+                    <span key={i} className="flex items-center gap-1.5 px-3 py-1.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-full text-xs font-medium text-slate-700 dark:text-slate-300">
+                      <span className="text-sm">{getTechIcon(tech)}</span>
                       {tech}
                     </span>
                   ))}
@@ -152,7 +154,7 @@ const Projects = () => {
               className="w-full px-4 py-2 pl-10 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:outline-none focus:border-brand-purple focus:ring-1 focus:ring-brand-purple transition-colors"
             />
             <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">
-              🔍
+              <Search size={16} />
             </span>
           </div>
         </div>
@@ -196,12 +198,13 @@ const Projects = () => {
                   {/* Tech stack badges (limit to 4) */}
                   <div className="flex flex-wrap gap-2 mb-6">
                     {project.technologies?.slice(0, 4).map((tech, i) => (
-                      <span key={i} className="text-xs font-medium text-slate-500 bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">
+                      <span key={i} className="flex items-center gap-1 text-xs font-medium text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 px-2 py-1 rounded shadow-sm">
+                        <span>{getTechIcon(tech)}</span>
                         {tech}
                       </span>
                     ))}
                     {project.technologies?.length > 4 && (
-                      <span className="text-xs font-medium text-slate-500 bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">
+                      <span className="text-xs font-medium text-slate-500 bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 px-2 py-1 rounded shadow-sm">
                         +{project.technologies.length - 4}
                       </span>
                     )}
@@ -209,7 +212,7 @@ const Projects = () => {
 
                   <button 
                     onClick={() => setSelectedProject(project)}
-                    className="w-full py-2.5 bg-brand-purple/10 hover:bg-brand-purple/20 text-brand-purple rounded-lg font-medium transition-colors"
+                    className="w-full py-2.5 bg-brand-purple/10 hover:bg-brand-purple/20 text-brand-purple rounded-lg font-medium transition-colors mt-auto"
                   >
                     View Details
                   </button>

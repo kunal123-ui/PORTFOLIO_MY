@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { usePortfolio } from '../context/PortfolioContext';
+import { getTechIcon } from '../config/iconMap';
 
 const Skills = () => {
   const { data } = usePortfolio();
@@ -11,7 +12,7 @@ const Skills = () => {
 
   const filteredSkills = activeCategory === 'ALL' 
     ? skills 
-    : skills.filter(skill => skill.category === activeCategory);
+    : skills.filter(skill => skill.category.toUpperCase() === activeCategory);
 
   return (
     <section className="py-20 bg-slate-50 dark:bg-brand-dark">
@@ -39,7 +40,7 @@ const Skills = () => {
         </div>
 
         {/* Skills Grid */}
-        <motion.div layout className="flex flex-wrap justify-center gap-4">
+        <motion.div layout className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
           <AnimatePresence>
             {filteredSkills.map((skill) => (
               <motion.div
@@ -49,18 +50,28 @@ const Skills = () => {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.8 }}
                 transition={{ duration: 0.3 }}
-                className="glass-card px-6 py-4 rounded-xl flex items-center justify-center gap-2 group cursor-default"
+                whileHover={{ y: -5 }}
+                className="glass-card p-6 rounded-2xl flex flex-col items-center justify-center text-center group cursor-default shadow-sm hover:shadow-lg transition-all border border-slate-200 dark:border-slate-700"
               >
-                <span className="font-semibold text-slate-800 dark:text-slate-200 group-hover:text-brand-blue transition-colors">
+                <div className="text-5xl mb-4 text-slate-700 dark:text-slate-300 group-hover:scale-110 transition-transform duration-300">
+                  {getTechIcon(skill.name)}
+                </div>
+                <span className="font-bold text-slate-800 dark:text-slate-200 mb-1">
                   {skill.name}
+                </span>
+                <span className="text-xs font-medium text-slate-500 uppercase tracking-wider">
+                  {skill.category}
                 </span>
               </motion.div>
             ))}
           </AnimatePresence>
-          {filteredSkills.length === 0 && (
-            <p className="text-slate-500 mt-8">No skills found in this category.</p>
-          )}
         </motion.div>
+        
+        {filteredSkills.length === 0 && (
+          <div className="text-center py-10">
+            <p className="text-slate-500">No skills found in this category.</p>
+          </div>
+        )}
       </div>
     </section>
   );
