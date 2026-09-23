@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { usePortfolio } from '../../context/PortfolioContext';
-import { Search, Trash2, MailOpen, Mail } from 'lucide-react';
+import { Search, Trash2, MailOpen, Mail, MessageSquare } from 'lucide-react';
 import { toast } from 'react-toastify';
 
 const MessagesView = () => {

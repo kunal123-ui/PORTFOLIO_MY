@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
       - name: portfolio
-        image: ${IMAGE_NAME} # Will be replaced by CI/CD
+        image: kuna542006/portfolio:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 80
