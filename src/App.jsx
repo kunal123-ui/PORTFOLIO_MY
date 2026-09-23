@@ -14,7 +14,7 @@ function App() {
   return (
     <ThemeProvider>
       <PortfolioProvider>
-        <BrowserRouter>
+        <BrowserRouter basename="/PORTFOLIO_MY/">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/admin/*" element={<Admin />} />
