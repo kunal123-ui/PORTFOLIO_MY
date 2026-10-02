@@ -26,7 +26,7 @@ const Hero = () => {
             >
               <div className="flex flex-col lg:flex-row items-center gap-6 mb-6">
                 <div className="w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden border-4 border-white dark:border-slate-800 shadow-xl bg-slate-200 dark:bg-slate-800 flex-shrink-0">
-                  <img src="/profile.jpg" alt="Kunal M." className="w-full h-full object-cover" />
+                  <img src={`${import.meta.env.BASE_URL}profile.jpg`} alt="Kunal M." className="w-full h-full object-cover" />
                 </div>
                 <div>
                   <p className="text-brand-blue font-semibold tracking-wider uppercase mb-2">Hello, I'm</p>
@@ -58,7 +58,7 @@ const Hero = () => {
                   View My Work <ArrowRight size={18} />
                 </ScrollLink>
                 <a 
-                  href="/resume.pdf" 
+                  href={`${import.meta.env.BASE_URL}resume.pdf`} 
                   download
                   className="w-full sm:w-auto px-8 py-3.5 glass-card hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl font-medium transition-all flex items-center justify-center gap-2"
                 >
