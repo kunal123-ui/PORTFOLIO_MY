@@ -13,7 +13,7 @@ const ProjectsCRUD = () => {
   const [showConfirmDelete, setShowConfirmDelete] = useState(null);
 
   const initialFormState = {
-    title: '', category: 'Frontend', description: '', image: '', github: '', liveDemo: '', technologies: '', features: ''
+    title: '', category: 'Frontend', description: '', explanation: '', image: '', github: '', liveDemo: '', technologies: '', features: ''
   };
   const [formData, setFormData] = useState(initialFormState);
 
@@ -198,8 +198,13 @@ const ProjectsCRUD = () => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-1">Description *</label>
-                <textarea name="description" required rows="3" value={formData.description} onChange={handleChange} className="w-full px-3 py-2 border border-slate-200 dark:border-slate-700 rounded-lg bg-transparent"></textarea>
+                <label className="block text-sm font-medium mb-1">Short Description *</label>
+                <textarea name="description" required rows="2" value={formData.description} onChange={handleChange} className="w-full px-3 py-2 border border-slate-200 dark:border-slate-700 rounded-lg bg-transparent"></textarea>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium mb-1">Complete Explanation (Implementation Details)</label>
+                <textarea name="explanation" rows="4" placeholder="Write a detailed explanation of how this project works..." value={formData.explanation || ''} onChange={handleChange} className="w-full px-3 py-2 border border-slate-200 dark:border-slate-700 rounded-lg bg-transparent"></textarea>
               </div>
 
               <div>

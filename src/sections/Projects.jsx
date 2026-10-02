@@ -64,6 +64,15 @@ const ProjectModal = ({ project, onClose }) => {
                 </p>
               </div>
 
+              {project.explanation && (
+                <div>
+                  <h3 className="text-xl font-bold mb-3 border-b border-slate-200 dark:border-slate-800 pb-2">Implementation Details</h3>
+                  <p className="text-slate-600 dark:text-slate-400 leading-relaxed whitespace-pre-wrap">
+                    {project.explanation}
+                  </p>
+                </div>
+              )}
+
               {project.features && project.features.length > 0 && (
                 <div>
                   <h3 className="text-xl font-bold mb-3 border-b border-slate-200 dark:border-slate-800 pb-2">Key Features</h3>
@@ -170,7 +179,8 @@ const Projects = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.3 }}
-                className="glass-card rounded-2xl overflow-hidden flex flex-col group h-full"
+                onClick={() => setSelectedProject(project)}
+                className="glass-card rounded-2xl overflow-hidden flex flex-col group h-full cursor-pointer"
               >
                 {/* Image Placeholder/Image */}
                 <div className="h-48 bg-slate-200 dark:bg-slate-800 overflow-hidden relative">
