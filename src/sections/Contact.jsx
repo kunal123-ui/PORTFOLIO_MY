@@ -42,7 +42,7 @@ const Contact = () => {
 
       const data = await response.json();
 
-      if (data.success === "true") {
+      if (response.ok) {
         // Also save to our localStorage Admin dashboard
         addMessage({
           ...formData,
@@ -53,7 +53,8 @@ const Contact = () => {
         toast.success("Message sent successfully! I'll check my email and get back to you.");
         setFormData({ name: '', email: '', subject: '', message: '' });
       } else {
-        toast.error("Failed to send message. Please try again.");
+        toast.error(data.message || "Failed to send message. Please try again.");
+        console.error("FormSubmit Error:", data);
       }
     } catch (error) {
       toast.error("An error occurred while sending the message.");
