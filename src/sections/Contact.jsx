@@ -24,21 +24,43 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // In a real scenario with EmailJS:
-    // await emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', form.current, 'YOUR_PUBLIC_KEY')
-    
-    // For this portfolio, we save to our localStorage Admin dashboard
-    setTimeout(() => {
-      addMessage({
-        ...formData,
-        date: new Date().toISOString(),
-        read: false
+    try {
+      // Send email using FormSubmit.co API
+      const response = await fetch("https://formsubmit.co/ajax/kuna542006@gmail.com", {
+        method: "POST",
+        headers: { 
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message
+        })
       });
-      
-      toast.success("Message sent successfully! I'll get back to you soon.");
-      setFormData({ name: '', email: '', subject: '', message: '' });
+
+      const data = await response.json();
+
+      if (data.success === "true") {
+        // Also save to our localStorage Admin dashboard
+        addMessage({
+          ...formData,
+          date: new Date().toISOString(),
+          read: false
+        });
+        
+        toast.success("Message sent successfully! I'll check my email and get back to you.");
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else {
+        toast.error("Failed to send message. Please try again.");
+      }
+    } catch (error) {
+      toast.error("An error occurred while sending the message.");
+      console.error(error);
+    } finally {
       setIsSubmitting(false);
-    }, 1000); // Simulate network delay
+    }
   };
 
   return (
@@ -68,7 +90,7 @@ const Contact = () => {
               </div>
               <div>
                 <p className="text-sm text-slate-500 font-semibold uppercase">Email</p>
-                <a href="mailto:kunal@example.com" className="text-lg font-medium hover:text-brand-blue transition-colors">kunal@example.com</a>
+                <a href="mailto:kuna542006@gmail.com" className="text-lg font-medium hover:text-brand-blue transition-colors break-all">kuna542006@gmail.com</a>
               </div>
             </div>
 
@@ -78,7 +100,7 @@ const Contact = () => {
               </div>
               <div>
                 <p className="text-sm text-slate-500 font-semibold uppercase">Phone</p>
-                <a href="tel:+910000000000" className="text-lg font-medium hover:text-brand-purple transition-colors">+91 0000000000</a>
+                <a href="tel:+917845524394" className="text-lg font-medium hover:text-brand-purple transition-colors">+91 7845524394</a>
               </div>
             </div>
 
@@ -178,7 +200,7 @@ const Contact = () => {
               </button>
               
               <p className="text-xs text-slate-500 mt-4 text-center md:text-left">
-                * Note: In this portfolio build, messages are stored locally in the browser and can be viewed in the Admin Dashboard. To connect to an email service, integrate Formspree or EmailJS.
+                * Messages are sent directly to my email and backed up securely in my dashboard.
               </p>
             </form>
           </div>
