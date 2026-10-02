@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from './context/ThemeContext';
 import { PortfolioProvider } from './context/PortfolioContext';
 import { ToastContainer } from 'react-toastify';
@@ -14,13 +14,13 @@ function App() {
   return (
     <ThemeProvider>
       <PortfolioProvider>
-        <BrowserRouter basename="/PORTFOLIO_MY/">
+        <HashRouter>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/admin/*" element={<Admin />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
-        </BrowserRouter>
+        </HashRouter>
         <ToastContainer 
           position="bottom-right"
           theme="colored"
