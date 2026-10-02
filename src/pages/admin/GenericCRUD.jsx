@@ -4,12 +4,8 @@ import { Plus, Edit2, Trash2, Search, X } from 'lucide-react';
 import { toast } from 'react-toastify';
 
 const GenericCRUD = ({ collection, title, fields }) => {
-  const { data, getItems, addItem, updateItem, deleteItem } = usePortfolio();
-  
-  // Use generic context methods based on collection name, but fallback to specific if needed
-  // Since we mapped them explicitly in context, we can just use the generic ones we added
-  
-  const items = data[collection] || [];
+  const context = usePortfolio();
+  const items = context.data[collection] || [];
   
   const [searchTerm, setSearchTerm] = useState('');
   const [isEditing, setIsEditing] = useState(false);
@@ -64,22 +60,17 @@ const GenericCRUD = ({ collection, title, fields }) => {
       'achievements': { add: 'addAchievement', update: 'updateAchievement', del: 'deleteAchievement' },
     };
 
-    const actionContext = require('../../context/PortfolioContext').usePortfolio(); // re-import to access specific funcs if generic fails
-    // Wait, better to just use the specific functions exposed in the component props or generic context
-    // In PortfolioContext we exposed addSkill, updateSkill etc.
-    
-    // Let's rely on the global context directly for this
-    
     try {
       if (currentItem) {
-        actionContext[actionMap[collection].update](currentItem.id, formData);
+        context[actionMap[collection].update](currentItem.id, formData);
         toast.success(`${title} updated successfully`);
       } else {
-        actionContext[actionMap[collection].add](formData);
+        context[actionMap[collection].add](formData);
         toast.success(`${title} added successfully`);
       }
       handleCloseForm();
     } catch (e) {
+      console.error(e);
       toast.error('An error occurred');
     }
   };
@@ -92,8 +83,8 @@ const GenericCRUD = ({ collection, title, fields }) => {
       'certifications': 'deleteCertification',
       'achievements': 'deleteAchievement',
     };
-    const actionContext = require('../../context/PortfolioContext').usePortfolio();
-    actionContext[actionMap[collection]](id);
+    
+    context[actionMap[collection]](id);
     toast.info(`${title} deleted successfully`);
     setShowConfirmDelete(null);
   };
