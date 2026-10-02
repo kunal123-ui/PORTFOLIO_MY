@@ -33,19 +33,19 @@ const Hero = () => {
                   <h1 className="text-5xl md:text-7xl font-bold tracking-tight">Kunal <span className="text-brand-blue">M.</span></h1>
                 </div>
               </div>
-              <h2 className="text-2xl md:text-3xl font-semibold text-slate-700 dark:text-slate-300 mb-6">Software Developer</h2>
+              <h2 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-slate-200 mb-6">Software Developer</h2>
               
-              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 text-sm md:text-base font-medium text-slate-500 dark:text-slate-400 mb-6">
+              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 text-sm md:text-base font-semibold text-slate-700 dark:text-slate-300 mb-6">
                 <span className="flex items-center gap-1"><Terminal size={16} className="text-brand-blue" /> Frontend</span>
-                <span className="text-slate-300 dark:text-slate-600">•</span>
+                <span className="text-slate-400 dark:text-slate-600">•</span>
                 <span className="flex items-center gap-1"><Server size={16} className="text-brand-purple" /> Full Stack</span>
-                <span className="text-slate-300 dark:text-slate-600">•</span>
+                <span className="text-slate-400 dark:text-slate-600">•</span>
                 <span className="flex items-center gap-1"><Cloud size={16} className="text-brand-green" /> DevOps</span>
               </div>
 
-              <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+              <p className="text-lg md:text-xl text-slate-800 dark:text-slate-300 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-medium">
                 I build modern web applications, scalable backend systems and automated deployment workflows. 
-                <strong className="block mt-2 text-slate-800 dark:text-slate-200">Design • Develop • Deploy</strong>
+                <strong className="block mt-2 text-slate-900 dark:text-slate-100 font-bold">Design • Develop • Deploy</strong>
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mb-10">
