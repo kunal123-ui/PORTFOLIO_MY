@@ -54,8 +54,14 @@ const Navbar = () => {
             <button onClick={toggleTheme} className="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors">
               {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
             </button>
+            <Link 
+              to="/admin" 
+              className="px-4 py-2 bg-brand-purple hover:bg-purple-600 text-white text-sm font-medium rounded-lg transition-colors"
+            >
+              Admin
+            </Link>
             <a 
-              href="/resume.pdf" 
+              href={`${import.meta.env.BASE_URL}resume.pdf`} 
               download 
               className="px-4 py-2 bg-brand-blue hover:bg-blue-600 text-white text-sm font-medium rounded-lg transition-colors"
             >
@@ -92,7 +98,10 @@ const Navbar = () => {
               {link.name}
             </ScrollLink>
           ))}
-          <a href="/resume.pdf" download className="mt-4 px-8 py-3 bg-brand-blue text-white rounded-lg font-medium w-3/4 text-center">
+          <Link to="/admin" onClick={() => setMobileMenuOpen(false)} className="mt-4 px-8 py-3 bg-brand-purple text-white rounded-lg font-medium w-3/4 text-center">
+            Admin Dashboard
+          </Link>
+          <a href={`${import.meta.env.BASE_URL}resume.pdf`} download className="mt-4 px-8 py-3 bg-brand-blue text-white rounded-lg font-medium w-3/4 text-center">
             Download Resume
           </a>
         </div>
